@@ -8,13 +8,14 @@ for(i in 1:7){
 
 #2
 set.seed(14)
+count <- NULL
 for(i in 1:1000){
-  a <- sample(1:6, 1)
-  b <- sample(1:6, 1)
-  ab <- a + b
-  if (ab %in% c(8, 9, 10, 11, 12)) {
-    break
-  } else if (a|b == 2|6) {
+  roll <- sample(1:6, 2, replace = T)
+  sum.roll <- sum(roll)
+  if (sum.roll >= 8 & sum.roll <=12) {
+    print(i)
     break
   }
+  count <- c(count, i)
+  print(paste("The average trial is", mean(count)))
 }
