@@ -1,6 +1,9 @@
 ###### PDS-PS2
 ##### Jin Kim
 
+#begin by cleaning the global environment
+rm(list = ls())
+
 ##### 1
 for(i in 1:7){
   print(i^3)
@@ -9,19 +12,29 @@ for(i in 1:7){
 
 
 ##### 2
+#setting the seed
 set.seed(14)
-for(i in 1:1000){
-  
+
+#create a null vector to count the number of dice casts
+count <- NULL
+
+#double for loops!
+for(i in 1:1000){ # for 1000 simulations
+  for (j in 1:100) { # for throwing until conditions are met
   roll <- sample(1:6, 2, replace = T)
   sum.roll <- sum(roll)
-  if (i == 1 & sum.roll >= 8) {
-    print(roll)
+  if (j == 1 & sum.roll >= 8) {
+    count <- c(count, j)
     break
   } else if (i != 1 & (roll[1] == 2 | roll[2] == 2 | roll[1] == 6 | roll[2] == 6)) {
-    print(roll)
+    count <- c(count, j)
     break
   }
+  }
 }
+
+#average number of dice casts
+mean(count)
 
 
 
