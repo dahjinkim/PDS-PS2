@@ -7,6 +7,7 @@ for(i in 1:7){
 }
 
 
+
 #2
 count <- 0
 for(i in 1:1000){
@@ -24,7 +25,9 @@ for(i in 1:1000){
 }
 
 
+
 #3
+
 #reading in the data
 library(readr)
 GSS <- read.csv("http://politicaldatascience.com/PDS/Problem%20Sets/Problem%20Set%202/
@@ -43,6 +46,7 @@ vote.choice <- function(x){
     return(NULL)
   }
 }
+
 #test to see if it works
 vote.choice("Trump")
 vote.choice("Clinton")
@@ -61,6 +65,7 @@ vote.choice <- function(x){
     return(print("Please enter either 'Trump' 'Clinton' or 'Other' into the function to return a valid response."))
   }
 }
+
 #test to see if it works
 Clington <- c(1, 2, 3)
 vote.choice(1)
@@ -68,8 +73,35 @@ vote.choice("Clington")
 vote.choice(Clington)
 
 
+
 #4.
+
 #installing packages
 install.packages("fivethirtyeight")
 library(fivethirtyeight)
+
+#review data in the cabinet_turnover object
+head(cabinet_turnover)
+str(cabinet_turnover)
+
+#create a function called 'appoint'
+appoint <- function(pres){
+  x <- cabinet_turnover[cabinet_turnover$president == pres, ] 
+  #subsetting the data by president
+  xmean <- as.numeric(mean(x$days, na.rm = T)) 
+  #taking the average days of appointees
+  if (pres == "Carter" | pres == "Bush 41"){
+    return(xmean/1461)
+  } else if (pres == "Reagan" | pres == "Clinton" | pres == "Bush 43" | pres == "Obama") {
+    return(xmean/2922)
+  } else if (pres == "Trump") {
+    return(xmean/1105)
+  } 
+}
+
+#test to see if it works
+appoint("Reagan")
+
+
+#5
 
