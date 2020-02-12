@@ -41,8 +41,7 @@ mean(count)
 ##### 3
 #reading in the data
 library(readr)
-GSS <- read.csv("http://politicaldatascience.com/PDS/Problem%20Sets/Problem%20Set%202/
-GSS-data.csv")
+GSS <- read.csv("http://politicaldatascience.com/PDS/Problem%20Sets/Problem%20Set%202/GSS-data.csv")
 
 #creating a function that takes in one of "Trump", "Clinton", and "Other"
 #and return the number of participants who voted for each of the inputs.
