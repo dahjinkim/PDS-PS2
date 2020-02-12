@@ -25,7 +25,6 @@ for(i in 1:1000){
 
 
 #3
-
 #reading in the data
 library(readr)
 GSS <- read.csv("http://politicaldatascience.com/PDS/Problem%20Sets/Problem%20Set%202/
@@ -73,9 +72,7 @@ vote.choice(Clington)
 
 
 #4.
-
-#installing packages
-install.packages("fivethirtyeight")
+#install.packages("fivethirtyeight")
 library(fivethirtyeight)
 
 #review data in the cabinet_turnover object
@@ -103,13 +100,29 @@ appoint("Reagan")
 
 
 #5
-
 #assigning the data to an object
 cong.age <- congress_age
 
 #make a function
 congress_stats <- function(x) {
     if (x == "congress") {
-      
+      era <- unique(cong.age$congress)
+      ave.age.by.era <- NULL
+      for(i in era) {
+        mean.age <- round(mean(cong.age$age[cong.age$congress==i]), digits = 1)
+        ave.age.by.era <- c(ave.age.by.era, mean.age)
+      }
+      return(cbind(ave.age.by.era, era))
+    } else if (x == "state") {
+      state <- unique(cong.age$state)
+      ave.age.by.state <- NULL
+      for(i in state) {
+        mean.age <- round(mean(cong.age$age[cong.age$state==i]), digits = 1)
+        ave.age.by.state <- c(ave.age.by.state, mean.age)
+      }
+      return(cbind(ave.age.by.state, state))
     }
 }
+
+congress_stats("congress")
+congress_stats("state")
