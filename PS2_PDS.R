@@ -9,7 +9,7 @@ for(i in 1:7){
 
 
 #2
-count <- 0
+set.seed(14)
 for(i in 1:1000){
   roll <- sample(1:6, 2, replace = T)
   sum.roll <- sum(roll)
@@ -17,9 +17,7 @@ for(i in 1:1000){
     print(roll)
     break
   } else if (i != 1 & (roll[1] == 2 | roll[2] == 2 | roll[1] == 6 | roll[2] == 6)) {
-    print(i)
     print(roll)
-    count <- c(count, i)
     break
   }
 }
@@ -103,5 +101,15 @@ appoint <- function(pres){
 appoint("Reagan")
 
 
+
 #5
 
+#assigning the data to an object
+cong.age <- congress_age
+
+#make a function
+congress_stats <- function(x) {
+    if (x == "congress") {
+      
+    }
+}
