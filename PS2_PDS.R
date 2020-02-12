@@ -1,16 +1,17 @@
-#PDS-PS2
-#Jin Kim
+###### PDS-PS2
+##### Jin Kim
 
-#1
+##### 1
 for(i in 1:7){
   print(i^3)
 }
 
 
 
-#2
+##### 2
 set.seed(14)
 for(i in 1:1000){
+  
   roll <- sample(1:6, 2, replace = T)
   sum.roll <- sum(roll)
   if (i == 1 & sum.roll >= 8) {
@@ -24,7 +25,7 @@ for(i in 1:1000){
 
 
 
-#3
+##### 3
 #reading in the data
 library(readr)
 GSS <- read.csv("http://politicaldatascience.com/PDS/Problem%20Sets/Problem%20Set%202/
@@ -71,7 +72,7 @@ vote.choice(Clington)
 
 
 
-#4.
+##### 4.
 #install.packages("fivethirtyeight")
 library(fivethirtyeight)
 
@@ -99,7 +100,7 @@ appoint("Reagan")
 
 
 
-#5
+##### 5
 #assigning the data to an object
 cong.age <- congress_age
 
@@ -107,9 +108,11 @@ cong.age <- congress_age
 congress_stats <- function(x) {
     if (x == "congress") {
       era <- unique(cong.age$congress)
+      #created a vector of congress eras
       ave.age.by.era <- NULL
       for(i in era) {
         mean.age <- round(mean(cong.age$age[cong.age$congress==i]), digits = 1)
+        #average age, rounded to the first digit
         ave.age.by.era <- c(ave.age.by.era, mean.age)
       }
       return(cbind(ave.age.by.era, era))
@@ -124,5 +127,6 @@ congress_stats <- function(x) {
     }
 }
 
+#test to see if it works
 congress_stats("congress")
 congress_stats("state")
